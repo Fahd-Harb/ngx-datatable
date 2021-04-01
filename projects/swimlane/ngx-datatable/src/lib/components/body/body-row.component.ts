@@ -243,7 +243,9 @@ export class DataTableBodyRowComponent implements DoCheck {
 
   recalculateColumns(val: any[] = this.columns): void {
     this._columns = val;
-    this._columns = this._columns.map(col => ({ ...col, frozenLeft: false }));
+    if (this._columns) {
+      this._columns = this._columns.map(col => ({ ...col, frozenLeft: false }));
+    }
     const colsByPin = columnsByPin(this._columns);
     this._columnsByPin = columnsByPinArr(this._columns);
     this._columnGroupWidths = columnGroupWidths(colsByPin, this._columns);
