@@ -244,7 +244,9 @@ export class DataTableBodyRowComponent implements DoCheck {
   recalculateColumns(val: any[] = this.columns): void {
     this._columns = val;
     if (this._columns) {
-      this._columns = this._columns.map(col => ({ ...col, frozenLeft: false }));
+      this._columns = this._columns.map(function (col) {
+        return Object.assign(col, { frozenLeft: false });
+      });
     }
     const colsByPin = columnsByPin(this._columns);
     this._columnsByPin = columnsByPinArr(this._columns);
